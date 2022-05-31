@@ -5,45 +5,48 @@ public class Radio {
     private int currentStationNumber;
     private int countStations;
 
-    public Radio(int currentVolume, int currentStationNumber, int countStations) {
-        this.currentVolume = currentVolume;
-        this.currentStationNumber = currentStationNumber;
-        this.countStations = countStations;
+    public int getCountStations() {
+        return countStations;
     }
 
-    public Radio() { // Используется в последнем тесте
-        this.countStations = 10;
+    public void setCountStations(int countStations) {
+        this.countStations = countStations;
     }
 
     public int getCurrentStationNumber() {
         return currentStationNumber;
     }
+
     public void setCurrentStationNumber(int newStationNumber) {
         if (newStationNumber < 0) {
             return;
         }
-        if (newStationNumber > this.countStations -1) {
+        if (newStationNumber > getCountStations() - 1) {
             return;
         }
         this.currentStationNumber = newStationNumber;
     }
+
     public void nextStationNumber() {
-        if (currentStationNumber == this.countStations -1) {
+        if (currentStationNumber == getCountStations() - 1) {
             this.currentStationNumber = 0;
             return;
         }
-        this.currentStationNumber = currentStationNumber +1;
+        this.currentStationNumber = currentStationNumber + 1;
     }
+
     public void prevStationNumber() {
         if (currentStationNumber == 0) {
-            this.currentStationNumber = this.countStations -1;
+            this.currentStationNumber = getCountStations() - 1;
             return;
         }
         this.currentStationNumber = currentStationNumber - 1;
     }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
+
     public void setCurrentVolume(int newVolume) {
         if (newVolume < 0) {
             return;
@@ -53,14 +56,24 @@ public class Radio {
         }
         this.currentVolume = newVolume;
     }
+
     public void increaseVolume() {
         if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
     }
+
     public void turnDownVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
+    }
+
+    public Radio(int countStations) {
+        this.countStations = countStations;
+    }
+
+    public Radio() { // Используется в тесте setupNumberStationUpperCorrect
+        this.countStations = 10;
     }
 }
