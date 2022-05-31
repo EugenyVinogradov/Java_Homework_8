@@ -11,6 +11,7 @@ public class RadioTest {
     @Test
     public void setupNumberStationCorrectNew() {
         radio.setCurrentStationNumber(5);
+        radio.getCountStations();
         int expected = 5;
         int actual = radio.getCurrentStationNumber();
         assertEquals(expected, actual);
@@ -23,6 +24,8 @@ public class RadioTest {
     }
     @Test
     public void setupNumberStationCorrect() {
+        Radio radio = new Radio();
+        radio.setCountStations(10);
         radio.setCurrentStationNumber(5);
         int expected = 5;
         int actual = radio.getCurrentStationNumber();
@@ -288,7 +291,6 @@ public class RadioTest {
     }
     @Test
     public void turnDownVolumeLowerUpBorder() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(99);
         radio.turnDownVolume();
         int expected = 98;
